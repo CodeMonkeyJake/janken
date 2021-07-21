@@ -1,7 +1,6 @@
-
-
-
-
+const ROCK = document.querySelector('.rock')
+const PAPER = document.querySelector('.paper')
+const SCISSORS = document.querySelector('.scissors')
 
 
 
@@ -35,18 +34,43 @@ function playRound(playerSelection, computerSelection) {
  }
 
 
- function game() {
-     for (let i = 0; i < 5; i ++) {
-const playerSelection = prompt('rock ,paper, scissors?')
-const computerPick = computerSelection();
-console.log(` the computer picks : ${computerPick}!`)
-console.log(playRound(playerSelection.toUpperCase(),computerPick))
-
-     }
+let playerscore = 0
 
 
 
- }
+  ROCK.addEventListener('click', () => {
+if (playRound('ROCK', computerSelection()) === 'you win!') {
+    playerscore += 1 
+    document.querySelector('.p1Score').textContent = playerscore
 
- game()
+}
+     
+  })
+
+    PAPER.addEventListener('click', () => {
+    console.log(playRound('PAPER', computerSelection()))
+   
+})
+
+        SCISSORS.addEventListener('click', () => {
+    console.log(playRound('SCISSORS', computerSelection()))
+   
+})
+
+
+
+//  function game() {
+//      for (let i = 0; i < 5; i ++) {
+// const playerSelection = prompt('rock ,paper, scissors?')
+// const computerPick = computerSelection();
+// console.log(` the computer picks : ${computerPick}!`)
+// console.log(playRound(playerSelection.toUpperCase(),computerPick))
+
+//      }
+
+
+
+//  }
+
+//  game()
 

@@ -1,8 +1,16 @@
 const ROCK = document.querySelector('.rock')
 const PAPER = document.querySelector('.paper')
 const SCISSORS = document.querySelector('.scissors')
+const resetbtn = document.querySelector('.reset')
 
 
+const reset = function() {
+    
+        playerScore = 0
+        computerScore = 0
+        document.querySelector('.p1Score').textContent = playerScore
+        document.querySelector('.compScore').textContent = playerScore
+}
 
 const computerSelection = function () {
 // computer choices
@@ -34,29 +42,100 @@ function playRound(playerSelection, computerSelection) {
  }
 
 
-let playerscore = 0
-
+let playerScore = 0
+let computerScore = 0
 
 
   ROCK.addEventListener('click', () => {
 if (playRound('ROCK', computerSelection()) === 'you win!') {
-    playerscore += 1 
-    document.querySelector('.p1Score').textContent = playerscore
+    playerScore += 1 
+    document.querySelector('.p1Score').textContent = playerScore
+    document.querySelector('.gameStatus').textContent = 'you win!'
+    document.querySelector('.gameStatus').style.color = 'green'
+    
 
+} else if(playRound('ROCK', computerSelection()) === 'you lose!') {
+    computerScore += 1
+    document.querySelector('.compScore').textContent = computerScore;
+    document.querySelector('.gameStatus').textContent = 'you lose!';
+    document.querySelector('.gameStatus').style.color = 'red'
 }
-     
+else {
+    document.querySelector('.gameStatus').textContent = 'tie!'
+    document.querySelector('.gameStatus').style.color = 'black'
+} 
+if(playerScore === 5 ) {
+    document.querySelector('.gameStatus').textContent = 'game over, player 1 wins!'
+        reset()
+} else if(computerScore === 5) {
+    document.querySelector('.gameStatus').textContent = 'your pathetic, computer wins!'
+    reset()
+}
+
+
   })
 
     PAPER.addEventListener('click', () => {
-    console.log(playRound('PAPER', computerSelection()))
+        if (playRound('PAPER', computerSelection()) === 'you win!') {
+            playerScore += 1 
+            document.querySelector('.p1Score').textContent = playerScore
+            document.querySelector('.gameStatus').textContent = 'you win!'
+            document.querySelector('.gameStatus').style.color = 'green'
+            
+        
+        } else if(playRound('PAPER', computerSelection()) === 'you lose!') {
+            computerScore += 1
+            document.querySelector('.compScore').textContent = computerScore;
+            document.querySelector('.gameStatus').textContent = 'you lose!';
+            document.querySelector('.gameStatus').style.color = 'red'
+        }
+        else {
+            document.querySelector('.gameStatus').textContent = 'tie!'
+            document.querySelector('.gameStatus').style.color = 'black'
+        }
+        if(playerScore === 5 ) {
+            document.querySelector('.gameStatus').textContent = 'game over, player 1 wins!'
+            reset()
+        } else if(computerScore === 5) {
+            document.querySelector('.gameStatus').textContent = 'your pathetic, computer wins!'
+            reset()    
+        }
    
 })
 
         SCISSORS.addEventListener('click', () => {
-    console.log(playRound('SCISSORS', computerSelection()))
+            if (playRound('SCISSORS', computerSelection()) === 'you win!') {
+                playerScore += 1 
+                document.querySelector('.p1Score').textContent = playerScore
+                document.querySelector('.gameStatus').textContent = 'you win!'
+                document.querySelector('.gameStatus').style.color = 'green'
+            
+            } else if(playRound('SCISSORS', computerSelection()) === 'you lose!') {
+                computerScore += 1
+                document.querySelector('.compScore').textContent = computerScore;
+                document.querySelector('.gameStatus').textContent = 'you lose!';
+                document.querySelector('.gameStatus').style.color = 'red'
+            }
+            else {
+                document.querySelector('.gameStatus').textContent = 'tie!'
+                document.querySelector('.gameStatus').style.color = 'black'
+            }
+        
+            if(playerScore === 5 ) {
+                document.querySelector('.gameStatus').textContent = 'game over, player 1 wins!'
+                reset()
+            } else if(computerScore === 5) {
+                document.querySelector('.gameStatus').textContent = 'your pathetic, computer wins!'
+                reset()
+            }
    
 })
 
+
+resetbtn.addEventListener('click', () => {
+    reset()
+}
+)
 
 
 //  function game() {
